@@ -60,11 +60,13 @@ process.stdin.on('keypress', function(ch, key) {
     } else if (key.name == 'q') {
         console.log("play song");
         mysong = [
-            [43, 500],
-            [40, 500],
-            [37, 500],
-            [34, 500],
-            [32, 500]
+            [578, 500],
+            [246, 500],
+            [129, 500],
+            [789, 500],
+            [980, 500],
+            [678, 500],
+            [126, 500]
         ];
         robot.sing(mysong);
     }
