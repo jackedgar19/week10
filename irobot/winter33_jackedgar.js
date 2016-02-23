@@ -64,9 +64,9 @@ process.stdin.on('keypress', function(ch, key) {
             [246, 500],
             [129, 500],
             [789, 500],
-            [980, 500],
+            [980, 467],
             [678, 500],
-            [126, 500]
+            [126, 1000]
         ];
         robot.sing(mysong);
     }
