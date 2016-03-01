@@ -12,40 +12,17 @@
     tempo = 1;
     pitch = 2;
     aidansong = [
-            [578*pitch, 100*tempo],
-            [246*pitch, 100*tempo],
-            [129*pitch, 100*tempo],
-            [789*pitch, 100*tempo],
-            [980*pitch, 167*tempo],
-            [676*pitch, 100*tempo],
-            [123*pitch, 100*tempo],
-            [456*pitch, 100*tempo],
-            [789*pitch, 100*tempo],
-            [436*pitch, 100*tempo],
-            [321*pitch, 100*tempo],
-            [876*pitch, 100*tempo],
-            [654*pitch, 100*tempo],
-            [584*pitch, 100*tempo],
-            [785*pitch, 100*tempo],
-            [231*pitch, 100*tempo],
-            [641*pitch, 100*tempo],
-            [513*pitch, 100*tempo],
-            [715*pitch, 100*tempo],
-            [111*pitch, 100*tempo],
-            [735*pitch, 100*tempo],
-            [876*pitch, 100*tempo],
-            [761*pitch, 100*tempo],
-            [612*pitch, 100*tempo],
-            [412*pitch, 100*tempo],
-            [876*pitch, 100*tempo],
-            [142*pitch, 100*tempo],
-            [762*pitch, 100*tempo],
-            [214*pitch, 100*tempo],
-            [124*pitch, 100*tempo],
-            [765*pitch, 100*tempo],
-            [145*pitch, 100*tempo],
-            [126*pitch, 100*tempo]
+            [698.46,225],
+            [587.33,225],
+            [698.46,450],
+            [659.26,450],
+            [554.37,450],
+            [587.33,450],
+            [523.25,250]
     ];
+
+    spin = turn.right
+    
     $(document).ready(function() {
         var socket = io('/');
         socket.on('sensordata', function(data) {
@@ -92,6 +69,10 @@
         $("#fullMode").click(function(e) {
             socket.emit('fullMode');
         });
+        $("#spin").click(function(e) {
+            socket.emit('spin');
+
+        });
         $('body').keydown(function(event) {
             console.log(event.which);
             speed = $("#speed").text();
@@ -119,7 +100,7 @@
             if (event.which === 65) //d - move right
             {
                 speed = $("#speed").text();
-                speed = 50;
+                speed = 100;
                 $("#speed").text(speed);
                 socket.emit('drive', {
                     left: speed,
@@ -129,7 +110,7 @@
             if (event.which === 68) //a - move left
             {
                 speed = $("#speed").text();
-                speed = 50;
+                speed = 100;
                 $("#speed").text(speed);
                 socket.emit('drive', {
                     left: -speed,
@@ -160,6 +141,7 @@
             <button id="aidan">song</button>
             <button id="safeMode">safeMode</button>
             <button id="fullMode">fullMode</button>
+            <button id="spin">spin</button>
             Voltage <span id="voltage">...</span>
         </div>
         <div>speed:<span id="speed">100</span></div>
